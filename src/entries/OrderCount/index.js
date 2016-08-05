@@ -1,21 +1,19 @@
 import './index.less';
+import 'antd/dist/antd.css';
+
+//依赖
 import React from 'react';
 import ReactDOM from 'react-dom';
-import 'antd/dist/antd.css';
 import { Router, Route, IndexRoute, Link ,hashHistory } from 'react-router';
-import PlateOrder from '../../components/OrderCount/PlateOrder/View/View'
-import OutputMonitor from '../../components/OrderCount/OutputMonitor/View/View'
-import ChanceView from '../../components/OrderCount/ChanceCount/ChanceView/View/View'
-// import SendReport from '../../components/OrderCount/SendReport/View/View'
+import { Provider } from 'react-redux';
+
+import routes from '../../routes/OrderCount/route'
+
+// import store from '../../redux/stores/OrderCount/route'
 
 
-ReactDOM.render((
-    <Router history={hashHistory}>
-        <Route path="PlateOrder" component={PlateOrder}></Route>
-        <Route path="OutputMonitor" component={OutputMonitor}></Route>
-        <Route path="ChanceCount">
-          <Route path="ChanceView" component={ChanceView}/>
-        </Route>
-        {/*<Route path="SendReport" component={SendReport}></Route>*/}
-    </Router>
-), document.getElementById('root'));
+ReactDOM.render(
+  <Provider>
+      <Router routes={routes}/>
+  </Provider>,
+  document.getElementById('root'));
